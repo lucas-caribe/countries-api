@@ -17,14 +17,17 @@ export default function CountryCard({ country }) {
           <span className='label'>Area:</span>
           <span className='area'>{country.area}²</span>
         </div>
+
         <div className='row'>
           <span className='label'>Population:</span>
           <span className='population'>{country.population}</span>
         </div>
+
         <div className='row'>
           <span className='label'>Languages:</span>
           <span className='languages'>{country.languages.join(', ')}</span>
         </div>
+
         <div className='row'>
           <span className='label'>Neighboring Countries:</span>
           <span className='neighboring-countries'>
