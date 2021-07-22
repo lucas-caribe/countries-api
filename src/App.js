@@ -13,18 +13,24 @@ async function getApiInfo() {
 
   const countries = data.map(
     ({ name, flag, languages, capital, area, population, borders }) => {
+      const formattedLanguages = languages.map(({ name }) => name);
+
+      const formattedArea = new Intl.NumberFormat('en-us', {
+        style: 'unit',
+        unit: 'kilometer',
+      }).format(area);
+
+      const formattedPopulation = new Intl.NumberFormat('en-us', {
+        notation: 'compact',
+      }).format(population);
+
       return {
         name,
         flag,
-        languages: languages.map(({ name }) => name),
+        languages: formattedLanguages,
         capital,
-        area: new Intl.NumberFormat('en-us', {
-          style: 'unit',
-          unit: 'kilometer'
-        }).format(area),
-        population: new Intl.NumberFormat('en-us', {
-          notation: 'compact',
-        }).format(population),
+        area: formattedArea,
+        population: formattedPopulation,
         neighboringCountries: borders.length,
       };
     },
